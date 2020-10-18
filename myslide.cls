@@ -179,11 +179,11 @@
       matrix of nodes,
       row 1/.style={nodes = {draw, minimum size=7mm}},
       column sep=-\pgflinewidth,
-      row sep=-\pgflinewidth, 
+      row sep=-\pgflinewidth,
       nodes in empty cells,
       row 2/.style={nodes=rowlabel2},
       ampersand replacement=\&
-    }, 
+    },
     arraynode/.style={
       draw,
       node contents={[\the\numexpr\pgfmatrixcurrentrow-2\relax][\the\numexpr\pgfmatrixcurrentcolumn-2\relax]},
@@ -195,33 +195,33 @@
       red,
       node contents={\the\numexpr\pgfmatrixcurrentcolumn-2\relax},
       alias=c\the\numexpr\pgfmatrixcurrentcolumn-2\relax
-      },      
+      },
   rowlabel/.style={
       minimum size=0pt,
       draw=none,
       red,
       node contents={\the\numexpr\pgfmatrixcurrentrow-2\relax},
       alias=r\the\numexpr\pgfmatrixcurrentrow-2\relax
-      },      
+      },
   emptynode/.style={node contents=~, draw=none},
   font=\ttfamily,
   array/.style={%
       matrix of nodes,
       nodes = arraynode,
       column sep=-\pgflinewidth,
-      row sep=-\pgflinewidth, 
+      row sep=-\pgflinewidth,
       nodes in empty cells,
       row 1/.style={nodes=columnlabel},
       column 1/.style={nodes=rowlabel},
       row 1 column 1/.style={%
-          nodes=emptynode}}, 
+          nodes=emptynode}},
   rowlabel2/.style={
       inner sep=2pt,
       draw=none,
       font=\small\ttfamily,
       node contents={\the\numexpr-1+\pgfmatrixcurrentcolumn\relax},
       alias=m\the\numexpr-1+\pgfmatrixcurrentcolumn\relax
-      }, 
+      },
   memory/.style={%
       matrix of nodes,
       nodes={draw, minimum size=6mm, anchor=center},
@@ -229,14 +229,24 @@
       column 1/.style={nodes = {rowlabel, black}},
       row 1 column 1/.style={nodes = emptynode},
       column sep=-\pgflinewidth,
-      row sep=-\pgflinewidth, 
+      row sep=-\pgflinewidth,
       nodes in empty cells,
   },
 }
 
 
 \newcommand{\alertshow}[2]{
-  \onslide<#1->{\alert<#1>{#2}}
+  \onslide<#1->{%
+    \mode<beamer>{%
+      \alert<#1>{#2}
+    }
+    \mode<handout>{
+      #2
+    }
+    \mode<article>{
+      #2
+    }
+  }
 }
 \newcommand{\onlyshow}[2]{
   \only<presentation>{
