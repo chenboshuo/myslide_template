@@ -41,7 +41,7 @@
 }
 
 \ProcessOptionsX
-\LoadClass[\myclassoptions]{\myclasstype}
+\LoadClass[ignorenonframetext,\myclassoptions]{\myclasstype}
 
 % 设置颜色
 \RequirePackage{xcolor}
