@@ -5,6 +5,7 @@
 *.toc
 *.nav
 *.synctex.gz
+*.vrb
 
 # build files
 **/_build/*

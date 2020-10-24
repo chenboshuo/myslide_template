@@ -1,10 +1,10 @@
 % \documentclass[ebook]{myslide} % 移动设备
 \documentclass[slide]{myslide} % 幻灯片展示
-% \documentclass[slide,handout]{myslide} % 幻灯片无动画 不建议使用
+% \documentclass[slide,handout]{myslide} % 幻灯片无动画
 % \documentclass[plain]{myslide} % A4打印
+%% 以上内容更改后需要修改 make.sh
 
-
-\title{example}
+\title{关于模板的使用说明}
 \date{\today}
 \author{陈伯硕}
 \institute{github}
@@ -13,11 +13,52 @@
 
 \begin{document}
 \maketitle
-忽略幻灯片之外的文字
+
 \begin{frame}{example}
 	\tableofcontents
 \end{frame}
 
-\section{a section}
+\section{开始}
+
+\subsection{几种版本}
+
+
+
+\begin{frame}[fragile]
+  \frametitle{几种版本}
+		在$\id{main.tex}$的前四行提供以下\LaTeX 类
+
+\begin{lstlisting}[language=python]
+% \documentclass[ebook]{myslide} % 移动设备
+\documentclass[slide]{myslide} % 幻灯片展示
+% \documentclass[slide,handout]{myslide} % 幻灯片无动画
+% \documentclass[plain]{myslide} % A4打印
+\end{lstlisting}
+	分别取消注释可以的到对应类的模板.
+
+	对于linux可以直接通过
+\begin{lstlisting}[language=bash]
+sh make.sh
+\end{lstlisting}
+	运行脚本自动创建所有版本
+
+\end{frame}
+
+\subsubsection{说明}
+
+	\begin{frame}{一些说明}
+		\begin{itemize}
+			\item beamer模式忽略frame之外的文字
+			\item article模式忽略frame标题
+		\end{itemize}
+
+	\end{frame}
+	例如这段文字在幻灯片模式中看不见
+	忽略幻灯片之外的文字
+
+\subsection{其他新命令}
+
+
+
 
 \end{document}
