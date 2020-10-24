@@ -254,6 +254,9 @@
   }
 }
 
+\mode<article>{
+  \setbeamertemplate{frametitle}{}
+}
 
 % 设置代码环境
 \RequirePackage{listings}
