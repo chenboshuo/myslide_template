@@ -248,12 +248,14 @@
     }
   }
 }
-\newcommand{\onlyshow}[2]{
-  \only<presentation>{
+% \newcommand{\onlyshow}[2]{
+\newcommand{\onlyfocus}[2]{
+  \only<beamer>{
     \only<#1>{\alert<#1>{#2}}
   }
 }
 
+% 关闭非slide的幻灯片标题
 \mode<article>{
   \setbeamertemplate{frametitle}{}
 }

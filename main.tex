@@ -28,7 +28,7 @@
   \frametitle{几种版本}
 		在$\id{main.tex}$的前四行提供以下\LaTeX 类
 
-\begin{lstlisting}[language=python]
+\begin{lstlisting}[language=tex]
 % \documentclass[ebook]{myslide} % 移动设备
 \documentclass[slide]{myslide} % 幻灯片展示
 % \documentclass[slide,handout]{myslide} % 幻灯片无动画
@@ -57,6 +57,25 @@ sh make.sh
 	忽略幻灯片之外的文字
 
 \subsection{其他新命令}
+	\subsubsection{alertshow}
+
+\begin{frame}[fragile]
+	\frametitle{alertshow}
+\begin{lstlisting}[language=tex]
+\alertshow{2}{这些文字会在slide第二张出现并强调，其他版本不强调}
+\end{lstlisting}
+	\alertshow{2}{这些文字会在slide第二张出现并强调，其他版本不强调}
+\end{frame}
+
+\subsection{onlyfocus}
+\begin{frame}[fragile]
+	\frametitle{onlyfocus}
+\begin{lstlisting}[language=tex]
+\onlyfocus{2}{这些文字只会在slide第二张出现并强调，
+未出现不占空间,其他版本不显示}
+\end{lstlisting}
+	\onlyfocus{2}{这些文字只会在slide第二张出现并强调，未出现不占空间，其他版本不显示}
+\end{frame}
 
 
 
