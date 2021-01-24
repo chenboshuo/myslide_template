@@ -74,6 +74,7 @@
       \AtPagemyUpperLeft{#1}
     }%
   }
+  \hypersetup{pdfpagemode=FullScreen} % 设置自动播放
 \fi
 
 % 加载打印版选项
