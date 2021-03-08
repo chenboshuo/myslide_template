@@ -292,4 +292,9 @@
 
 \lstset{style=blue}
 
+% toc in toc
+\RequirePackage[alldates=iso8601]{biblatex}
+
+\RequirePackage{hyperref}
+
 \endinput

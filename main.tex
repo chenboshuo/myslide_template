@@ -10,6 +10,8 @@
 \institute{github}
 \logo{\includegraphics[scale=0.7]{logo}}
 
+% references
+\bibliography{reference}
 
 \begin{document}
 \maketitle
@@ -38,7 +40,7 @@
 
 	对于linux可以直接通过
 \begin{lstlisting}[language=bash]
-sh make.sh
+make all
 \end{lstlisting}
 	运行脚本自动创建所有版本
 
@@ -77,7 +79,15 @@ sh make.sh
 	\onlyfocus{2}{这些文字只会在slide第二张出现并强调，未出现不占空间，其他版本不显示}
 \end{frame}
 
+\begin{frame}
+	尝试引用\cite{Forrest2014}
+\end{frame}
 
+\addcontentsline{toc}{section}{References}
+\begin{frame}[allowframebreaks]
+\frametitle{References}
+    \printbibliography
+\end{frame}
 
 
 \end{document}
