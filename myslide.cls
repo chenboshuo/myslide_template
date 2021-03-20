@@ -261,6 +261,12 @@
   \setbeamertemplate{frametitle}{}
 }
 
+% toc in toc
+\RequirePackage[alldates=iso]{biblatex}
+
+\RequirePackage{hyperref}
+
+
 % 设置代码环境
 \RequirePackage{listings}
 \RequirePackage{xcolor}
@@ -268,15 +274,41 @@
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{codehighlight}{rgb}{0.95,0.8,0.8}
+\definecolor{codebackground}{rgb}{0.95,0.95,0.95}
+
+\lstdefinestyle{highlight}{
+  firstnumber=auto,
+  frame=tb,
+  rulecolor=\color{gray!35},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  backgroundcolor={},
+  basicstyle={},
+  tabsize=4,
+  lineskip=0pt,
+  aboveskip=0pt,
+  belowskip=0pt,
+  framesep=0pt,
+  rulesep=0pt,
+  framerule=0pt,
+}
+
 
 \lstdefinestyle{blue}{
   firstnumber=auto,
   frame=tb,
-  aboveskip=3mm,
-  belowskip=3mm,
-  showstringspaces=false,
-  columns=flexible,
-  framerule=1pt,
+  % aboveskip=3mm,
+  % aboveskip=0mm,
+  % belowskip=3mm,
+  % belowskip=0mm,
+  % showstringspaces=false,
+  % columns=flexible,
+  % framerule=1pt,
+  % % framerule=0pt,
   rulecolor=\color{gray!35},
   backgroundcolor=\color{gray!10},
   basicstyle={\small\ttfamily},
@@ -285,16 +317,67 @@
   keywordstyle=\color{blue},
   commentstyle=\color{dkgreen},
   stringstyle=\color{mauve},
-  breaklines=true,
-  breakatwhitespace=true,
-  tabsize=4,
+  % breaklines=true,
+  % breakatwhitespace=true,
+  % tabsize=4,
 }
 
 \lstset{style=blue}
 
-% toc in toc
-\RequirePackage[alldates=iso8601]{biblatex}
+% \lstset{%
+%   style=blue,
+% }%
 
-\RequirePackage{hyperref}
+% https://github.com/cebe/linehighlight
+
+% TIKZ libraries
+\usetikzlibrary{shapes,shapes.multipart,backgrounds,calc,fit}
+
+\newcommand{\highline}[1]{%
+  \foreach \x in {#1}%
+    \node[qahigh] at (0, 1 + -1 * \x) {%
+    % Example for use of graphics for highlighting
+    % uncomment and set graphics file for usage
+    %        \begin{flushright}
+    %        \includegraphics[height=\baselineskip]{graphics/left-arrow.pdf}
+    %        \end{flushright}
+    };%
+}%
+
+\newenvironment{linehighlight}[1]{
+  \lstset{style=highlight}%
+	% http://tex.stackexchange.com/a/17037/10327
+	\def\lineHighlightLines{#1}
+	\footnotesize
+	\begin{tikzpicture}[%
+	   % baseline=0pt,%
+  		y=\baselineskip,%
+  		% inner frame sep=0pt%
+  	]%
+		% Customize highlighting style here
+		\tikzstyle{qahigh}=[fill=codehighlight,%
+      text width=\textwidth+3.8pt,%
+			minimum height=\baselineskip,%
+      inner sep=0,
+      outer xsep=-3.8pt,
+      anchor=north west%
+		];%
+    %
+		\node[rectangle, anchor=north west, outer sep=0, inner ysep=0] (codenode) at (0,0)%
+		\bgroup% bgroup equals to {%
+			\begin{minipage}{\textwidth}%
+			\vspace{\baselineskip}
+}{%
+		  \end{minipage}%
+		\egroup;% egroup equals to };%
+    %
+		\begin{pgfonlayer}{background}%
+			\node[fill=codebackground,fit=(codenode), outer ysep=1] {};%
+      % \lstset{style=highlight}%
+			\lineHighlightLines%
+		\end{pgfonlayer}%
+	\end{tikzpicture}%
+  \lstset{style=blue}
+}
 
 \endinput
