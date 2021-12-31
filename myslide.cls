@@ -41,7 +41,7 @@
 }
 
 \ProcessOptionsX
-\LoadClass[ignorenonframetext,\myclassoptions]{\myclasstype}
+\LoadClass[\myclassoptions]{\myclasstype}
 
 % 设置颜色
 \RequirePackage{xcolor}
@@ -88,6 +88,7 @@
 \RequirePackage{ctex} % 中文包
 
 % 自动链接
+% \RequirePackage[pdfusetitle]{hyperref}
 \RequirePackage{hyperref}
 \hypersetup{hidelinks} % 隐藏超链接周围红框
 
@@ -264,9 +265,6 @@
 % toc in toc
 \RequirePackage[alldates=iso]{biblatex}
 
-\RequirePackage{hyperref}
-
-
 % 设置代码环境
 \RequirePackage{listings}
 \RequirePackage{xcolor}
@@ -344,8 +342,11 @@
     };%
 }%
 
+
 \newenvironment{linehighlight}[1]{
-  \lstset{style=highlight}%
+  \mode<beamer>{
+    \lstset{style=highlight}%
+  }
 	% http://tex.stackexchange.com/a/17037/10327
 	\def\lineHighlightLines{#1}
 	\footnotesize
@@ -374,10 +375,18 @@
 		\begin{pgfonlayer}{background}%
 			\node[fill=codebackground,fit=(codenode), outer ysep=1] {};%
       % \lstset{style=highlight}%
-			\lineHighlightLines%
+      \mode<beamer>{
+        \lineHighlightLines%
+      }
 		\end{pgfonlayer}%
 	\end{tikzpicture}%
-  \lstset{style=blue}
 }
+% \mode<article>{
+%
+% }
+% \mode<handout>{
+%   \newenvironment{linehighlight}[1]{}{}
+% }
+
 
 \endinput
