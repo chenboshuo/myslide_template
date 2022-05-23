@@ -262,8 +262,10 @@
   \setbeamertemplate{frametitle}{}
 }
 
-% toc in toc
+% Reference in toc 参考文献
 \RequirePackage[alldates=iso]{biblatex}
+\newcommand{\upcite}[1]{$^{\mbox{\scriptsize \cite{#1}}}$}
+
 
 % 设置代码环境
 \RequirePackage{listings}
