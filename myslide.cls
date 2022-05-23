@@ -390,5 +390,61 @@
 %   \newenvironment{linehighlight}[1]{}{}
 % }
 
+% reference https://tex.stackexchange.com/questions/107057/adjusting-font-size-with-tikz-picture
+% 参数可以修改文字大小
+% \tikzset{fontscale/.style = {font=\relsize{#1}}}
+\usetikzlibrary{shapes.geometric, arrows}
+\usetikzlibrary{calc}
+\tikzstyle{flowchartNodeSettiings} = [%
+  % minimum width=3cm,
+  % minimum height=1cm,
+  text centered,
+  draw=black,
+  % node distance=1.8cm,
+  % text width=0.4\textwidth,
+  % fontscale=1.2
+]
+\tikzstyle{startstop} = [%
+  rectangle,
+  rounded corners,
+  flowchartNodeSettiings
+]
+\tikzstyle{io} = [%
+  trapezium,
+  trapezium left angle=70,
+  trapezium right angle=110,
+  flowchartNodeSettiings
+]
+\tikzstyle{process} = [
+  rectangle,
+  flowchartNodeSettiings
+]
+\tikzstyle{decision} = [
+  diamond,
+  aspect=2,
+  % minimum width=5cm,
+  % minimum height=1cm,
+  text centered,
+  draw=black,
+  % node distance=3cm,
+  % text width=0.3\textwidth,
+  % fontscale=1.2
+]
+% reference https://tex.stackexchange.com/questions/611853/tikz-showing-all-node-names-for-debugging
+\tikzstyle{debugstyle} = [
+  append after command={% courtesy of Alenanno ref: https://tex.stackexchange.com/questions/287967/drawing-thin-line-around-a-multipart-tikz-shape#comment696552_287972
+    \pgfextra{
+      \tikzset{debugstyle/.style={}}
+      \node [right,fill=white!20,text=gray!40]
+        (\tikzlastnode name)
+        at (\tikzlastnode.mid east)
+        {\tikzlastnode};
+      % \draw [->,gray!20] (\tikzlastnode name) -- (\tikzlastnode);
+    }
+  }
+]
+\tikzstyle{show node name} = [
+  every node/.append style=debugstyle
+]
 
 \endinput
