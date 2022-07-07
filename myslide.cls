@@ -266,7 +266,7 @@
 }
 
 % Reference in toc 参考文献
-\RequirePackage[alldates=iso]{biblatex}
+% \RequirePackage[alldates=iso]{biblatex} % 放到main.tex防格式冲突
 \newcommand{\upcite}[1]{$^{\mbox{\scriptsize \cite{#1}}}$}
 
 

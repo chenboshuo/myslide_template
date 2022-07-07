@@ -11,6 +11,7 @@
 \logo{\includegraphics[scale=0.7]{logo}}
 
 % references
+\usepackage[alldates=iso]{biblatex}
 \bibliography{reference}
 
 \begin{document}
@@ -118,6 +119,7 @@ make all
 \addcontentsline{toc}{section}{References}
 	\begin{frame}[allowframebreaks]
 	\frametitle{References}
+	% \bibsetup{style=alphabetic} % 设置文献引用风格
 		\nocite{*}
 		\printbibliography
 	\end{frame}
