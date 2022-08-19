@@ -357,9 +357,9 @@
 	\footnotesize
 	\begin{tikzpicture}[%
 	   % baseline=0pt,%
-  		y=\baselineskip,%
-  		% inner frame sep=0pt%
-  	]%
+      y=\baselineskip,%
+      % inner frame sep=0pt%
+    ]%
 		% Customize highlighting style here
 		\tikzstyle{qahigh}=[fill=codehighlight,%
       text width=\textwidth+3.8pt,%
@@ -374,7 +374,7 @@
 			\begin{minipage}{\textwidth}%
 			\vspace{\baselineskip}
 }{%
-		  \end{minipage}%
+      \end{minipage}%
 		\egroup;% egroup equals to };%
     %
 		\begin{pgfonlayer}{background}%
@@ -511,5 +511,32 @@
   }%
 }
 \renewcommand{\glossarysection}[2][]{}
+
+% for adjustwidth environment
+\RequirePackage[strict]{changepage}
+
+% for formal definitions
+\RequirePackage{framed}
+
+% environment derived from framed.sty: see leftbar environment definition
+\definecolor{formalShade}{rgb}{0.89,0.90,0.90}
+% \definecolor{formalShade}{rgb}{0.95,0.95,1}
+% \definecolor{darkMark}{rgb}{0.01,0.14,0.49}
+\definecolor{darkMark}{rgb}{0.13,0.21,0.23}
+
+\newenvironment{formal}{%
+  \def\FrameCommand{%
+    \hspace{1pt}%
+    {\color{darkMark}\vrule width 2pt}%
+    {\color{formalShade}\vrule width 4pt}%
+    \colorbox{formalShade}%
+  }%
+  \MakeFramed{\advance\hsize-\width\FrameRestore}%
+  \noindent\hspace{-4.55pt}% disable indenting first paragraph
+  \begin{adjustwidth}{}{7pt}%
+  \vspace{2pt}\vspace{2pt}%
+}{%
+  \vspace{2pt}\end{adjustwidth}\endMakeFramed%
+}
 
 \endinput
