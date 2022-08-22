@@ -59,15 +59,21 @@
 \if@Beamer
   \usetheme{metropolis}           % Use metropolis theme
 
-  \metroset{sectionpage=progressbar,% 在每节标题下加进度条
-            numbering=counter,% 展示页码
-            block=fill%
-            }
+  \metroset{
+    sectionpage=progressbar,% 在每节标题下加进度条
+    numbering=counter,% 展示页码
+    block=fill%
+  }
   % 调整logo位置
   \RequirePackage{eso-pic}
   \beamertemplatenavigationsymbolsempty
   \newcommand\AtPagemyUpperLeft[1]{\AtPageLowerLeft{%
-  \put(\LenToUnit{0.825\paperwidth},\LenToUnit{0.9\paperheight}){#1}}}
+  \ifbool{metropolis@standout}{
+    % do nothing if in standout page
+    }{% not stand out page
+      \put(\LenToUnit{0.825\paperwidth},\LenToUnit{0.9\paperheight}){#1}}%
+    }
+  }
 
   \renewcommand{\logo}[1]{
     \AddToShipoutPictureFG{
