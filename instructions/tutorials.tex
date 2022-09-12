@@ -1,0 +1,91 @@
+
+\begin{frame}{example}
+	\tableofcontents
+\end{frame}
+
+\section{开始}
+
+	\subsection{几种版本}
+
+		\begin{frame}[fragile]
+			\frametitle{几种版本}
+			\input{instructions/versions.tex}
+		\end{frame}
+
+	\subsection{说明}
+
+		\begin{frame}{一些说明}
+			\begin{itemize}
+				\item article模式忽略frame标题
+			\end{itemize}
+		\end{frame}
+		\mode<article>{
+			由于使用ignorenonframetext会使得standout出现问题,
+			故只在article中显示的要用
+			\lstinline{\\mode<article>{}}
+			避免slide出现问题。
+
+			例如,这段文字在幻灯片模式中看不见
+		}
+
+\section{其他新命令}
+	\subsection{alertshow}
+
+		\begin{frame}[fragile]
+			\frametitle{alertShow}
+			\input{instructions/alertshow.tex}
+		\end{frame}
+
+	\subsection{onlyFocus}
+		\begin{frame}[fragile]
+			\frametitle{onlyFocus}
+			\input{instructions/onlyForcus.tex}
+		\end{frame}
+	
+	\subsection{cite}
+		\begin{frame}[fragile]{cite}
+			\input{instructions/cite}
+		\end{frame}
+	\subsection{bibFrame}
+		\begin{frame}[fragile]{bibFrame}
+			\input{instructions/bibFrame.tex}
+		\end{frame}
+
+		\bibFrame{github}{some section}{
+			text from the bibliography
+		}
+
+	\subsection{formal}
+
+		\begin{frame}
+			\begin{formal}
+				formal
+			\end{formal}
+		\end{frame}
+
+\section{代码强调}
+
+	\begin{frame}[fragile]
+		\frametitle{linehighlight}
+		\begin{linehighlight}{
+				\only<1,3>{ % Only on slides 1 and 3 (beamer stuff)
+							\highline{1,3,5,12} % highlight code lines 1,3 and 5,12.
+				}
+				\only<2>{ % Only on slide 2 (beamer)
+							\highline{2,...,12} % highlight lines 2 to 12.
+				}
+			}
+			% put your \lstinputlisting{} or \begin{lstlisting}...\end{lstlisting} here
+			\lstinputlisting[language=tex,style=highlight]{src/highline.tex}
+		\end{linehighlight}
+
+	\end{frame}
+
+\begin{frame}[standout]
+	测试standout
+\end{frame}
+
+\section{项目地址}
+\begin{frame}{项目地址}
+	\url{https://github.com/chenboshuo/myslide_template}
+\end{frame}

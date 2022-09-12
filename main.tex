@@ -11,7 +11,8 @@
 \logo{\includegraphics[scale=0.7]{logo}}
 
 % references
-\usepackage[alldates=iso]{biblatex}
+\usepackage[backend=biber,
+	style=alphabetic]{biblatex}
 \bibliography{reference}
 
 \begin{document}
@@ -19,117 +20,14 @@
 	\maketitle
 \end{frame}
 
-\begin{frame}{example}
-	\tableofcontents
-\end{frame}
+\input{instructions/tutorials.tex}
 
-\section{开始}
-
-\subsection{几种版本}
-
-\begin{frame}[fragile]
-  \frametitle{几种版本}
-		在$\id{main.tex}$的前四行提供以下\LaTeX 类
-
-\begin{lstlisting}[language=tex]
-% \documentclass[ebook]{myslide} % 移动设备
-\documentclass[slide]{myslide} % 幻灯片展示
-% \documentclass[slide,handout]{myslide} % 幻灯片无动画
-% \documentclass[plain]{myslide} % A4打印
-\end{lstlisting}
-	分别取消注释可以的到对应类的模板.
-
-	对于linux可以直接通过
-\begin{lstlisting}[language=bash]
-make all
-\end{lstlisting}
-	运行脚本自动创建所有版本
-
-\end{frame}
-
-\subsubsection{说明}
-
-	\begin{frame}{一些说明}
-		\begin{itemize}
-			\item beamer模式忽略frame之外的文字
-			\item article模式忽略frame标题
-		\end{itemize}
-
-	\end{frame}
-	\mode<article>{
-		由于使用ignorenonframetext会使得standout出现问题,
-		故劲仔article中显示的要用
-		\lstinline{\\mode<article>{}}
-		避免slide出现问题。
-
-		例如,这段文字在幻灯片模式中看不见
-	}
-
-\section{其他新命令}
-	\subsubsection{alertshow}
-
-\begin{frame}[fragile]
-	\frametitle{alertshow}
-\begin{lstlisting}[language=tex]
-\alertshow{2}{这些文字会在slide第二张出现并强调，其他版本不强调}
-\end{lstlisting}
-	\alertshow{2}{这些文字会在slide第二张出现并强调，其他版本不强调}
-\end{frame}
-
-\subsection{onlyfocus}
-\begin{frame}[fragile]
-	\frametitle{onlyfocus}
-\begin{lstlisting}[language=tex]
-\onlyfocus{2}{这些文字只会在slide第二张出现并强调，
-未出现不占空间,其他版本不显示}
-\end{lstlisting}
-	\onlyfocus{2}{这些文字只会在slide第二张出现并强调，未出现不占空间，其他版本不显示}
-\end{frame}
-
-\begin{frame}
-	尝试引用\cite{github}
-\end{frame}
-
-\subsection{formal}
-
-\begin{frame}
-	\begin{formal}
-		formal
-	\end{formal}
-\end{frame}
-
-\section{代码强调}
-
-\begin{frame}[fragile]
-	\frametitle{linehighlight}
-	\begin{linehighlight}{
-			\only<1,3>{ % Only on slides 1 and 3 (beamer stuff)
-						\highline{1,3,5,12} % highlight code lines 1,3 and 5,12.
-			}
-			\only<2>{ % Only on slide 2 (beamer)
-						\highline{2,...,12} % highlight lines 2 to 12.
-			}
-		}
-		% put your \lstinputlisting{} or \begin{lstlisting}...\end{lstlisting} here
-		\lstinputlisting[language=tex,style=highlight]{src/highline.tex}
-	\end{linehighlight}
-
-\end{frame}
-
-\begin{frame}[standout]
-	测试standout
-\end{frame}
-
-\begin{frame}{项目地址}
-	\url{https://github.com/chenboshuo/myslide_template}
-\end{frame}
 
 \addcontentsline{toc}{section}{References}
-	\begin{frame}[allowframebreaks]
-	\frametitle{References}
-	% \bibsetup{style=alphabetic} % 设置文献引用风格
+	\begin{frame}[allowframebreaks]{References}
 		\nocite{*}
 		\printbibliography
 	\end{frame}
+
 
 \end{document}

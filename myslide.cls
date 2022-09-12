@@ -61,19 +61,23 @@
 
   \metroset{
     sectionpage=progressbar,% 在每节标题下加进度条
+    subsectionpage=progressbar,% 在每小节标题下加进度条
     numbering=counter,% 展示页码
     block=fill%
   }
   % 调整logo位置
+  \providebool{myslide@logo}
   \RequirePackage{eso-pic}
   \beamertemplatenavigationsymbolsempty
   \newcommand\AtPagemyUpperLeft[1]{\AtPageLowerLeft{%
-  \ifbool{metropolis@standout}{
-    % do nothing if in standout page
-    }{% not stand out page
-      \put(\LenToUnit{0.825\paperwidth},\LenToUnit{0.9\paperheight}){#1}}%
-    }
-  }
+    \booltrue{myslide@logo}
+    \ifbool{metropolis@standout}{
+      \boolfalse{myslide@logo}
+      }{}
+      \ifbool{myslide@logo}{
+        \put(\LenToUnit{0.825\paperwidth},\LenToUnit{0.9\paperheight}){#1}%
+      }{}
+  }}
 
   \renewcommand{\logo}[1]{
     \AddToShipoutPictureFG{
@@ -246,7 +250,7 @@
 }
 
 
-\newcommand{\alertshow}[2]{
+\newcommand{\alertShow}[2]{
   \onslide<#1->{%
     \mode<beamer>{%
       \alert<#1>{#2}
@@ -260,7 +264,7 @@
   }
 }
 % \newcommand{\onlyshow}[2]{
-\newcommand{\onlyfocus}[2]{
+\newcommand{\onlyFocus}[2]{
   \only<beamer>{
     \only<#1>{\alert<#1>{#2}}
   }
@@ -543,6 +547,23 @@
   \vspace{2pt}\vspace{2pt}%
 }{%
   \vspace{2pt}\end{adjustwidth}\endMakeFramed%
+}
+
+
+\newcommand{\bibFrame}[3]{%
+	% \mode<presentation>{
+  \begin{frame}{\cite[#2]{#1}}
+    \begin{formal}
+      #3%
+      \renewcommand{\thefootnote}{\cite{#1}}%
+      \footnote{%
+        \hspace{0.6cm}
+        \fullcite{#1},
+        #2
+      }%
+    \end{formal}
+  \end{frame}
+	% }
 }
 
 \endinput

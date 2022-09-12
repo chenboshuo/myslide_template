@@ -1,0 +1,15 @@
+在$\id{main.tex}$的前四行提供以下\LaTeX 类
+
+\begin{lstlisting}[language=tex]
+% \documentclass[ebook]{myslide} % 移动设备
+\documentclass[slide]{myslide} % 幻灯片展示
+% \documentclass[slide,handout]{myslide} % 幻灯片无动画
+% \documentclass[plain]{myslide} % A4打印
+\end{lstlisting}
+分别取消注释可以的到对应类的模板.
+
+对于linux可以直接通过
+\begin{lstlisting}[language=bash]
+make all
+\end{lstlisting}
+运行脚本自动创建所有版本
