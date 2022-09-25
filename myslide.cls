@@ -69,15 +69,24 @@
   \providebool{myslide@logo}
   \RequirePackage{eso-pic}
   \beamertemplatenavigationsymbolsempty
-  \newcommand\AtPagemyUpperLeft[1]{\AtPageLowerLeft{%
-    \booltrue{myslide@logo}
-    \ifbool{metropolis@standout}{
-      \boolfalse{myslide@logo}
+  \newcommand\AtPagemyUpperLeft[1]{%
+    \AtPageLowerLeft{%
+      \ifbool{metropolis@standout}{
+        \boolfalse{myslide@logo}
       }{}
       \ifbool{myslide@logo}{
         \put(\LenToUnit{0.825\paperwidth},\LenToUnit{0.9\paperheight}){#1}%
       }{}
-  }}
+    }
+    \booltrue{myslide@logo}
+  }
+  \newcommand{\hideLogo}{
+    \boolfalse{myslide@logo}
+  }
+  \newcommand{\showLogo}{
+    \booltrue{myslide@logo}
+  }
+  \booltrue{myslide@logo}
 
   \renewcommand{\logo}[1]{
     \AddToShipoutPictureFG{
@@ -564,6 +573,17 @@
     \end{formal}
   \end{frame}
 	% }
+}
+
+\newcommand{\zhEn}[2]{%
+  \begin{columns}[t]
+    \begin{column}{0.5\textwidth}
+        #2
+    \end{column}
+    \begin{column}{0.5\textwidth}
+        #1
+    \end{column}
+  \end{columns}
 }
 
 \endinput
