@@ -576,14 +576,59 @@
 }
 
 \newcommand{\zhEn}[2]{%
-  \begin{columns}[t]
-    \begin{column}{0.5\textwidth}
-        #2
-    \end{column}
-    \begin{column}{0.5\textwidth}
-        #1
-    \end{column}
-  \end{columns}
+    \begin{columns}[t]
+      \begin{column}{0.45\textwidth}
+          #2
+      \end{column}
+      \begin{column}{0.45\textwidth}
+          #1
+      \end{column}
+    \end{columns}
+    \vspace{3pt}
 }
+
+% added text command
+% environment derived from framed.sty: see leftbar environment definition
+\definecolor{addedShade}{rgb}{0.82, 0.95, 0.87}
+\definecolor{addedMark}{rgb}{0.16, 0.34, 0.32}
+
+\newenvironment{addedBox}{%
+  \def\FrameCommand{%
+    \hspace{1pt}%
+    {\color{addedMark}\vrule width 2pt}%
+    {\color{addedShade}\vrule width 4pt}%
+    \colorbox{addedShade}%
+  }%
+  \MakeFramed{\advance\hsize-\width\FrameRestore}%
+  \noindent\hspace{-4.55pt}% disable indenting first paragraph
+  \begin{adjustwidth}{}{7pt}%
+  \vspace{2pt}\vspace{2pt}%
+}{%
+  \vspace{2pt}\end{adjustwidth}\endMakeFramed%
+}
+\newcommand{\DIFaddbegin}{\begin{addedBox}} %DIF PREAMBLE
+\newcommand{\DIFaddend}{\end{addedBox}} %DIF PREAMBLE
+
+% deleted text command
+% environment derived from framed.sty: see leftbar environment definition
+\definecolor{deletedShade}{rgb}{0.92, 0.62, 0.69}
+\definecolor{deletedMark}{rgb}{0.62, 0.12, 0.19}
+
+\newenvironment{deletedBox}{%
+  \def\FrameCommand{%
+    \hspace{1pt}%
+    {\color{deletedMark}\vrule width 2pt}%
+    {\color{deletedShade}\vrule width 4pt}%
+    \colorbox{deletedShade}%
+  }%
+  \MakeFramed{\advance\hsize-\width\FrameRestore}%
+  \noindent\hspace{-4.55pt}% disable indenting first paragraph
+  \begin{adjustwidth}{}{7pt}%
+  \vspace{2pt}\vspace{2pt}%
+}{%
+  \vspace{2pt}\end{adjustwidth}\endMakeFramed%
+}
+\newcommand{\DIFdelbegin}{\begin{deletedBox}} %DIF PREAMBLE
+\newcommand{\DIFdelend}{\end{deletedBox}} %DIF PREAMBLE
 
 \endinput
