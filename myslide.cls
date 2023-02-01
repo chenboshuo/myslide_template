@@ -57,7 +57,14 @@
 
 % 加载幻灯片选项
 \if@Beamer
-  \usetheme{metropolis}           % Use metropolis theme
+  \usetheme{metropolis}
+  % Numbered Definitions, Theorems in beamer           % Use metropolis theme
+  % reference: https://tex.stackexchange.com/questions/66655/numbered-definitions-theorems-in-beamer
+  \setbeamertemplate{theorems}[numbered] 
+
+  % reference:
+  % https://tex.stackexchange.com/questions/448028/issue-with-math-font-while-using-beamer
+  \usefonttheme[onlymath]{serif}
 
   \metroset{
     sectionpage=progressbar,% 在每节标题下加进度条
@@ -101,6 +108,8 @@
   \colorlet{fg}{black}
   \colorlet{bg}{white}
   \RequirePackage[noxcolor]{beamerarticle}
+  \newcommand{\hideLogo}{} % do nothing
+  \newcommand{\showLogo}{} % do nothing
 \fi
 
 % 包

@@ -54,6 +54,10 @@
 		\bibFrame{github}{some section}{
 			text from the bibliography
 		}
+	\subsection{中英}
+		\begin{frame}[fragile]{中英}
+			\input{instructions/zhEn.tex}
+		\end{frame}
 
 	\subsection{formal}
 
@@ -63,6 +67,17 @@
 			\end{formal}
 		\end{frame}
 
+	\subsection{隐藏logo}
+		\hideLogo
+		\begin{frame}
+			frame前使用命令
+			\lstinline{\hideLogo}隐藏logo
+
+			frame后使用命令
+			\lstinline{\showLogo}
+			恢复logo
+		\end{frame}
+		\showLogo
 \section{代码强调}
 
 	\begin{frame}[fragile]
@@ -85,7 +100,24 @@
 	测试standout
 \end{frame}
 
+\section{test}
+	\begin{frame}{test theorem}
+		\begin{theorem}
+			a test theorem
+			\label{th:test-th}
+		\end{theorem}
+		\cref{th:test-th}
+	\end{frame}
+
+	\begin{frame}{equation}
+		\begin{equation}
+			E = mc^2
+			% \label{eq:}
+		\end{equation}
+	\end{frame}
+
 \section{项目地址}
+\hideLogo
 \begin{frame}{项目地址}
 	\url{https://github.com/chenboshuo/myslide_template}
 \end{frame}
