@@ -46,6 +46,9 @@
 % 设置颜色
 \RequirePackage{xcolor}
 
+% new command
+\newcommand{\hideLogo}{} % do nothing
+\newcommand{\showLogo}{} % do nothing
 
 % 加载移动版选项
 \if@Ebook
@@ -60,7 +63,7 @@
   \usetheme{metropolis}
   % Numbered Definitions, Theorems in beamer           % Use metropolis theme
   % reference: https://tex.stackexchange.com/questions/66655/numbered-definitions-theorems-in-beamer
-  \setbeamertemplate{theorems}[numbered] 
+  \setbeamertemplate{theorems}[numbered]
 
   % reference:
   % https://tex.stackexchange.com/questions/448028/issue-with-math-font-while-using-beamer
@@ -87,10 +90,10 @@
     }
     \booltrue{myslide@logo}
   }
-  \newcommand{\hideLogo}{
+  \renewcommand{\hideLogo}{
     \boolfalse{myslide@logo}
   }
-  \newcommand{\showLogo}{
+  \renewcommand{\showLogo}{
     \booltrue{myslide@logo}
   }
   \booltrue{myslide@logo}
@@ -108,8 +111,6 @@
   \colorlet{fg}{black}
   \colorlet{bg}{white}
   \RequirePackage[noxcolor]{beamerarticle}
-  \newcommand{\hideLogo}{} % do nothing
-  \newcommand{\showLogo}{} % do nothing
 \fi
 
 % 包
