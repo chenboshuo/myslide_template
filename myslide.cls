@@ -651,4 +651,16 @@
 \newcommand{\DIFdelbegin}{\begin{deletedBox}} %DIF PREAMBLE
 \newcommand{\DIFdelend}{\end{deletedBox}} %DIF PREAMBLE
 
+% Dialog
+\RequirePackage{enumitem}
+\RequirePackage{xparse}
+\DeclareDocumentCommand \dialog { o m } {%
+  \begin{itemize}[%
+    ,label=\IfNoValueTF {#1} {---}{#1:}
+    ,nosep % optional
+    ]
+    \item #2
+  \end{itemize}%
+}
+
 \endinput
