@@ -53,7 +53,7 @@ diff: build
 	rm ./temp_diff -rf
 
 ## make *.pdf : generate the pdf files
-build/%.pdf: %.tex
+build/%.pdf: %.tex build
 	xelatex -output-directory="./build" $<
 	biber ./build/$(basename $<)
 	xelatex -output-directory="./build" $<
